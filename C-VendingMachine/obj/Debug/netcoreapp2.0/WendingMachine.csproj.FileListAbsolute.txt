@@ -1,0 +1,11 @@
+D:\sujit\WendingMachine\WendingMachine\bin\Debug\netcoreapp2.0\WendingMachine.deps.json
+D:\sujit\WendingMachine\WendingMachine\bin\Debug\netcoreapp2.0\WendingMachine.runtimeconfig.json
+D:\sujit\WendingMachine\WendingMachine\bin\Debug\netcoreapp2.0\WendingMachine.runtimeconfig.dev.json
+D:\sujit\WendingMachine\WendingMachine\bin\Debug\netcoreapp2.0\WendingMachine.dll
+D:\sujit\WendingMachine\WendingMachine\bin\Debug\netcoreapp2.0\WendingMachine.pdb
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.csprojResolveAssemblyReference.cache
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.csproj.CoreCompileInputs.cache
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.AssemblyInfoInputs.cache
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.AssemblyInfo.cs
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.dll
+D:\sujit\WendingMachine\WendingMachine\obj\Debug\netcoreapp2.0\WendingMachine.pdb

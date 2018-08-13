@@ -1,0 +1,96 @@
+﻿@model CansSetupModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="row" style="margin-top:30px;">
+    <!--For Getting cane stock-->
+    <div class="col-lg-5">
+        <div class="row">
+            <div class="col-lg-4" style="font-weight:bold; margin:5px;">flavors of cans</div>
+            <div class="col-lg-4" style="font-weight:bold; margin:5px;">Available Quentity</div>
+            <div class="col-lg-3" style="font-weight:bold; margin:5px 0px;">Dollar | Cents</div>
+
+        </div>
+        @if (Model.CansDetail != null)
+        {
+            for (int i = 0; i < Model.CansDetail.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(Model.CansDetail[i].Flavor) && Model.CansDetail[i].Quentity > 0)
+                {
+                    <div class="row">
+                        <div class="col-lg-3" style="margin-left:10px;">
+                            @Model.CansDetail[i].Flavor
+                        </div>
+                        <div class="col-lg-3" style="margin-left:70px; ">
+                            @Html.TextBoxFor(m => Model.CansDetail[i].Quentity, new { style = "width:40px;", @readonly = "readonly", autocomplete = "off" })
+                        </div>
+                        <div class="col-lg-3" style="margin-left:20px; ">
+                            @Html.TextBoxFor(m => Model.Dollar, new { style = "width:40px;",@readonly="readonly",id="CansDollarDefined", autocomplete = "off" })
+                            @Html.TextBoxFor(m => Model.Cents, new { style = "width:40px;", @readonly = "readonly",id="CansCentsDefined" , autocomplete = "off" })
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+    @using (Html.BeginForm("UpdateMachine", "Home", FormMethod.Post))
+    {
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-lg-7" style="font-weight:bold;">Choose the Flavor</div>
+            <div class="col-lg-3">
+                <select onchange="UpdateFlavorPurchased(this);">
+                    <option id="-1" value="-1" selected="selected" >Select</option>
+                    @if (Model.CansDetail != null)
+                    {
+                        for (int i = 0; i < Model.CansDetail.Count; i++)
+                        {
+                            if (!string.IsNullOrEmpty(Model.CansDetail[i].Flavor) && Model.CansDetail[i].Quentity > 0)
+                            {
+                                <option id="@Model.CansDetail[i].Flavor" value="@Model.CansDetail[i].Quentity"> @Model.CansDetail[i].Flavor</option>
+                            }
+                        }
+
+                    }
+
+                </select>
+                @Html.HiddenFor(m => Model.SelectedFalvor, new { id = "CansSelectedFlavor" })
+            </div>
+        </div>
+        <div class="row" style="font-weight:bold; margin-top:10px;">
+            <div class="col-lg-6">Enter Price Value</div>
+            <div class="col-lg-5" style="margin-left:22px;">
+                Dollar | Cents
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-5" style="margin-left:22px;">
+                <input type="number" id="CansDollar" autocomplete="off" style="width:40px;" />
+                <input type="number" id="CansCents" autocomplete="off" style="width:40px;" />
+                @Html.HiddenFor(m => m.Amount, new {id="CansAmount" })
+            </div>
+        </div>
+        <div class="row">
+            @Html.Hidden("MethodToPay",new {id= "MethodToPay" })
+            <div class="col-lg-3">
+                <input type="submit" id="btnCashPayment" value="Pay Cash" disabled="disabled" onclick="return ValidatePayment('cash');" />
+            </div>
+            <div class="col-lg-3" style="margin-left:10px;">
+                <input type="submit" id="btnCcPayment" value="Pay Card" disabled="disabled" onclick="return ValidatePayment('cc');" />
+            </div>
+        </div>
+    </div>
+    }
+    <div class="col-lg-3" style="margin-left:30px;">
+        <div class="row">
+            <div class="col-lg-6" style="font-weight:bold;">Money Available on Machine</div>
+            <div class="col-lg-6" style="font-weight:bold;">Credit card payments</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">@Model.MoneyinMachine</div>
+            <div class="col-lg-6">@Model.MoneyCCPayment</div>
+        </div>
+    </div>
+</div>
